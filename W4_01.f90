@@ -1,0 +1,10 @@
+IMPLICIT none
+INTEGER I
+OPEN(22,FILE='CH0303.DAT')
+I=100
+WRITE(22,'(A,I5)') 'RECORD',I/3
+WRITE(22,'()') ! add an empty line.
+WRITE(22,5) I
+5 FORMAT(I5)
+CLOSE(22)
+end
