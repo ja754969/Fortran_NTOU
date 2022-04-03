@@ -1,0 +1,13 @@
+IMPLICIT NONE
+CHARACTER*10 A
+LOGICAL LA,LB
+A = 'abcde'
+LA = .TRUE.
+LB = .NOT.LA
+WRITE(*,100) A
+100 format(A)
+WRITE(*,110) LA,LB
+110 format(L2,1x,L8)
+WRITE(*,120) A,A
+120 format(A3,1x,A4)
+END
