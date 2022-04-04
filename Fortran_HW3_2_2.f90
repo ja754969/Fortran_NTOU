@@ -1,22 +1,14 @@
 IMPLICIT none
 INTEGER A1,B1,C1,A2,B2,C2,A3,B3,C3
-REAL sum_A,sum_B,sum_C
-OPEN(30,FILE='FT_1102_EX_0302_BIN.DAT',ACCESS='sequential',FORM='FORMATTED')
-READ(30,*) A1,A2,A3
-READ(30,*) B1,B2,B3
-READ(30,*) C1,C2,C3
-!read(30,*) B1,B2,B3
-!read(30,*) C1,C2,C3
-!20 format(F2)
-sum_A = A1+A2+A3
-sum_B = B1+B2+B3
-sum_C = C1+C2+C3
-WRITE(*,*) sum_A
-WRITE(*,*) sum_B
-WRITE(*,*) sum_C
-!WRITE(*,100) A1,'+',A2,'+',A3,'=',sum_A
-!100 FORMAT(3(I5,A1),F8.2)
-!WRITE(*,100) B1,'+',B2,'+',B3,'=',sum_B
-!WRITE(*,100) C1,'+',C2,'+',C3,'=',sum_C
-CLOSE(30)
+REAL mean_1,mean_2,mean_3
+character Name1,Name2,Name3
+OPEN(31,FILE='FT_1102_EX0301_B_DIR.OUT',ACCESS = 'Direct',FORM='FORMATTED',RECL=40)
+READ(31,459,rec=1) Name1,A1,B1,C1,mean_1
+write(*,*) Name1,A1,B1,C1,mean_1
+READ(31,459,rec=2) Name2,A2,B2,C2,mean_2
+write(*,*) Name2,A2,B2,C2,mean_2
+READ(31,459,rec=3) Name3,A3,B3,C3,mean_3
+write(*,*) Name3,A3,B3,C3,mean_3
+459 FORMAT(A8,3(I8),F8.2)
+CLOSE(31)
 END
