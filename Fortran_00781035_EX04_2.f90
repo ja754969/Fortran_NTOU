@@ -37,7 +37,7 @@ DO I=1,9
     fee = fee+fee_one
     WRITE(22,15) car_mode_data,distance_data,fee_one
 END DO
-WRITE(*,*) fee
+WRITE(*,*) 'total fee is ',fee
 CLOSE(11)
 CLOSE(22)
 END
