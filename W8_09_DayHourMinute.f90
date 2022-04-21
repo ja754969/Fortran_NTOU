@@ -1,0 +1,23 @@
+! 輸入一實數表示小時，將其換算為日、時、分的單位表示
+IMPLICIT NONE
+REAL TOTAL
+INTEGER IDAY,IHOUR,IMINUTE
+DATA IDAY,IHOUR,IMINUTE/0,0,0/
+WRITE(*,'("INPUT A REAL NUMBER STANDS FOR HOURS-->"//)')
+READ(*,*) TOTAL
+IDAY = TOTAL/24
+TOTAL = TOTAL - IDAY*24.
+WRITE(*,*) 'IDAY,TOTAL->',IDAY,TOTAL
+IF (TOTAL .GT. 0.) THEN
+    IHOUR = TOTAL
+    TOTAL = TOTAL-IHOUR
+    WRITE(*,*) 'total 2 = ',total
+    IF (TOTAL .GT. 0.) THEN
+        IMINUTE = NINT(TOTAL*60.) ! 取最近的整數
+        WRITE(*,*) 'total*60, int(total*60.)=',total*60.,int(total*60.)
+        GO to 100
+    END IF
+    WRITE(*,*) 'Test...'
+END IF
+100 WRITE(*,*) 'DAY,HOUR,MINUTE>',IDAY,IHOUR,IMINUTE
+END

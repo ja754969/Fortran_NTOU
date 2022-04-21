@@ -24,7 +24,6 @@ D1223 = abs(D12-D23)
 D1323 = abs(D13-D23)
 IF ((D1213<0.0001) .and. (D1223<0.0001) .and. (D1323<0.0001)) then
     text = '正三角形 Equilateral triangle'
-
 ELSEIF ((D1213<0.0001) .or. (D1223<0.0001) .or. (D1323<0.0001)) then
     text = '等腰三角形 Isosceles triangle'
 ELSE
