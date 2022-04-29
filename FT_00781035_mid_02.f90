@@ -2,12 +2,13 @@
 IMPLICIT none
 INTEGER radius,water_amount
 INTEGER I
-REAL price_per_amout,BASE,TOTAL
+REAL price_per_amount,BASE,TOTAL,diff_money
 OPEN(22,FILE='FT_1102_MID_P02_inp.dat',Access='SEQUENTIAL',FORM='FORMATTED')
 23 FORMAT(I5,I6)
 
-!OPEN(24,FILE='FT_00781035_mid_2_out.out',Access='SEQUENTIAL',FORM='FORMATTED')
+OPEN(24,FILE='FT_00781035_mid_2_out.out',Access='SEQUENTIAL',FORM='FORMATTED')
 25 FORMAT(I5,I6,F7.1)
+26 FORMAT(A,I5,A,I6,A,F7.1,A,I6,A,F7.2,A,F7.1,A,F7.1)
 DO I=1,7
     READ(22,23) radius,water_amount
 
@@ -33,24 +34,31 @@ DO I=1,7
     END IF
 
     IF (water_amount .LE. 20) then
-        price_per_amout = 7.35
-        TOTAL = BASE + (price_per_amout*water_amount - 0)
-    ELSEIF (water_amount .GE. 21) .and. (water_amount .LE. 60) then
-        price_per_amout = 9.45
-        TOTAL = BASE + (price_per_amout*water_amount -42)
-    ELSEIF (water_amount .GE. 61) .and. (water_amount .LE. 100) then
-        price_per_amout = 11.55
-        TOTAL = BASE + (price_per_amout*water_amount -168)
+        price_per_amount = 7.35
+        diff_money = 0
+        TOTAL = BASE + (price_per_amount*water_amount - diff_money)
+    ELSEIF ((water_amount .GE. 21) .and. (water_amount .LE. 60)) then
+        price_per_amount = 9.45
+        diff_money = 42
+        TOTAL = BASE + (price_per_amount*water_amount - diff_money)
+    ELSEIF ((water_amount .GE. 61) .and. (water_amount .LE. 100)) then
+        price_per_amount = 11.55
+        diff_money = 168
+        TOTAL = BASE + (price_per_amount*water_amount - diff_money)
     ELSEIF (water_amount .GE. 101) then
-        price_per_amout = 12.075
-        TOTAL = BASE + (price_per_amout*water_amount -220.5)
+        price_per_amount = 12.075
+        diff_money = 220.5
+        TOTAL = BASE + (price_per_amount*water_amount - diff_money)
     ELSE
-        price_per_amout = 12.075
-        TOTAL = BASE + (price_per_amout*water_amount -220.5)
+        price_per_amount = 12.075
+        diff_money = 220.5
+        TOTAL = BASE + (price_per_amount*water_amount - diff_money)
     END IF
 
-    !WRITE(24,25) radius,water_amount,TOTAL
+    WRITE(*,25) radius,water_amount,TOTAL
+    WRITE(24,26) '水表口徑為 ',radius,'mm，用水度數為 ',water_amount,&
+        '度，則應繳水費=',BASE,'+',water_amount,'*',price_per_amount,' – ',diff_money,' = ',TOTAL
 END DO
-!CLOSE(24)
+CLOSE(24)
 CLOSE(22)
 END

@@ -1,0 +1,11 @@
+! FT_1102_Ch06_0601_1
+IMPLICIT NONE
+REAL DIST,U,V,AL,BE,A,B,C,X,Y
+DIST(X,Y)=SQRT(X*X+Y*Y)
+READ(*,*) U,V,AL,BE
+A = 1.0/DIST(U,V)**3
+B = (AL*AL+BE*BE)/(4+DIST(AL,BE))
+C = (COS(DIST((A+1.0),(B+2.0))))**3
+WRITE(*,100) A,B,C
+100 format('A=',F12.6,' B=',F12.6,' C=',F12.6)
+END

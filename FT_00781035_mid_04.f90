@@ -8,7 +8,7 @@ OPEN(44,FILE='FT_1102_MID_P04_inp.dat',Access='SEQUENTIAL',FORM='FORMATTED')
 46 FORMAT(F6.1,F4.1,F5.1,F11.2,F6.3)
 48 FORMAT(A,F6.1,A,F4.1,A,F5.1,A,F11.2,A,F6.3,A)
 OPEN(47,FILE='FT_00781035_mid_4_out.out',Access='SEQUENTIAL',FORM='FORMATTED')
-DO I=1,9
+DO I=1,10
     READ(44,45) distance,pressure,lat
 
     V_g = 100.*pressure/(1.46*(10.**(-5.))*sin(lat*3.1415*180.)*0.7*distance)

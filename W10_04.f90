@@ -1,0 +1,9 @@
+IMPLICIT NONE
+INTEGER I,K
+K = 0
+DO 100 I=1,10,2
+    K=2*I
+    WRITE(*,*) 'I=',I,' K=',K
+100 CONTINUE
+WRITE(*,*) '2..I = ',I,' K=',K
+END
