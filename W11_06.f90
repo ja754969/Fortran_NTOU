@@ -1,0 +1,12 @@
+! FT_1102_Ch07_0201_6.f90
+IMPLICIT NONE
+INTEGER I,J
+OPEN(30,FILE = 'FT_do_write_3.out')
+DO I = 1,3
+    WRITE(30,100) (I*J,J=1,5)
+END DO
+100 FORMAT(5I4)
+WRITE(*,*) 'I=',I,' J=',J
+CLOSE(30)
+END
+

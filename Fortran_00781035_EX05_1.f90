@@ -1,0 +1,7 @@
+! 曾鈺皓 00781035 Fortran_HW5_1
+REAL
+
+OPEN(file=11,,Access='SEQUENTIAL',FORMAT = 'FORMATTED')
+
+CLOSE(11)
+end

@@ -1,0 +1,16 @@
+! FT_1102_Ch07_0601_2.f90
+IMPLICIT NONE
+REAL T,RAN
+INTEGER I,J,K
+DO I = 1,100
+    J=I
+    T = RAN(J)
+    !WRITE(*,100) I,T
+    K = INT(T*1000.0)
+    IF (K.GE.1) THEN
+        WRITE(*,200) I,T,K
+    END IF
+END DO
+100 FORMAT('RAN(',I4,')=',F12.8)
+200 FORMAT('RAN(',I4,')=',F12.8,I6)
+END

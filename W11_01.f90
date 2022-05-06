@@ -1,0 +1,12 @@
+IMPLICIT none
+INTEGER I,J,H,T,Unit1
+REAL SPN
+DO I=100,999
+    H = INT(I/100)
+    T = INT((I-H*100)/10)
+    Unit1 = I-H*100-T*10
+    SPN = H*H*H+T*T*T+Unit1*Unit1*Unit1
+    IF(SPN .EQ. I) WRITE(*,100) I,SPN !
+END DO
+100 FORMAT(I6,F12.1)
+END
