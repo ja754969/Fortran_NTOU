@@ -28,12 +28,12 @@ WRITE(33,*) '手續費 = ',handling_fee
         !real_money_original = real_money_original - return_monthly
         !return_monthly = real_money*0.1
         TOTAL = TOTAL + return_monthly
-        res = res-return_monthly
+        res = res*(1.0+rate_monthly)-return_monthly
 
         MON = MON + 1
         IF (MON .GT. 12) THEN
-            YEAR = INT(MON/12.0)
-            MON_in_year = MON - YEAR*12
+            YEAR = MON/12
+            MON_in_year = MOD(MON,12)
         else
             YEAR = 0
             MON_in_year = MON
@@ -49,14 +49,14 @@ WRITE(33,*) '手續費 = ',handling_fee
         GOTO 100
     ELSE
         return_monthly = res
-        TOTAL = real_money_original*(1.0+rate_monthly)
+        TOTAL = TOTAL + return_monthly
         res = 0
 
         MON = MON + 1
         WRITE(*,*) 'Residual = ',res
         IF (MON .GT. 12) THEN
-            YEAR = INT(MON/12.0)
-            MON_in_year = MON - YEAR*12
+            YEAR = MON/12
+            MON_in_year = MOD(MON,12)
         else
             YEAR = 0
             MON_in_year = MON
@@ -71,12 +71,13 @@ WRITE(33,*) '手續費 = ',handling_fee
         GOTO 200
 
     END IF
-200 WRITE(*,*) 'real_money = ',real_money_original
+200 WRITE(*,*) '總繳款金額 = ',TOTAL
 
 diff = TOTAL - real_money
 
 WRITE(33,*) '------------------------------------------'
-WRITE(33,*) '總繳款金額比實際取得金額的差值',diff
+WRITE(33,*) '總繳款金額 ',TOTAL
+WRITE(33,*) '總繳款金額比實際取得金額的差值 ',diff
 !及、
 ! 、當月尚欠總金額，
 ! 共需還清時間(單位：年、月)及
