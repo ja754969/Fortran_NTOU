@@ -1,0 +1,16 @@
+! FT_1102_CH08_0201_3_read_2.f90
+IMPLICIT NONE
+INTEGER N,B(9),I
+
+OPEN(30,FILE = 'FT_Ch08_02_1.DAT')
+READ(30,*) N
+WRITE(*,*) 'N=',N
+DO I=1,9,2
+    READ(30,*) B(I)
+    WRITE(*,*) 'B(',I,')=',B(I)
+END DO
+
+100 FORMAT(3I4)
+
+CLOSE(30)
+END
