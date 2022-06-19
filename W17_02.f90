@@ -1,0 +1,23 @@
+IMPLICIT NONE
+REAL A(5),value1,value2,value3,sum1
+data A/1,2,3,4,5/
+VALUE1 = SUM1(5,A)
+WRITE(*,*) 'value1=',value1
+VALUE2 = SUM1(3,A(2))
+WRITE(*,*) 'value2=',value2
+VALUE3 = SUM1(3,A(3))
+WRITE(*,*) 'value3=',value3
+END
+
+REAL FUNCTION SUM1(N,AA)
+IMPLICIT NONE
+REAL AA(1)
+INTEGER I,N
+SUM1=0.0
+DO I=1,N
+    WRITE(*,100) 'AA(',I,')=',AA(I)
+    SUM1 = SUM1+AA(I)
+END DO
+100 FORMAT(A6,I3,A4,F8.1)
+RETURN
+END FUNCTION
